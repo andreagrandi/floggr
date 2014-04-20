@@ -45,9 +45,6 @@ def close_db(error):
     if hasattr(g, 'sqlite_db'):
         g.sqlite_db.close()
 
-if __name__ == '__main__':
-    app.run()
-
 @app.route('/')
 def show_entries():
     db = get_db()
@@ -85,3 +82,6 @@ def logout():
     session.pop('logged_in', None)
     flash('You were logged out')
     return redirect(url_for('show_entries'))
+
+if __name__ == '__main__':
+    app.run()
